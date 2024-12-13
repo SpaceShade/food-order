@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import cart from '../assets/shopping-cart.png'
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/navbar';
 const Home = () => 
     {
         const [food, setfood] = useState([
@@ -14,17 +15,12 @@ const Home = () =>
     ]);
     const navigate = useNavigate();
     const handleFoodClick =(id)=>{
-        navigate(``);
+        navigate(`/detail`);
     }
 
   return (
     <div>
-      <div className='p-4 shadow-md flex justify-between items-center'>
-        <h1 className='text-3xl ' >
-            Home
-        </h1>
-        <img src={cart} alt='cart' className='h-10 w-10 '/>
-      </div>
+        <Navbar/>
       <div className='my-8 flex flex-wrap justify-center items-center'>
             {food.map((food)=>(
             <div key={food.id} 
