@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import cart from '../assets/shopping-cart.png'
+import { useNavigate } from 'react-router-dom';
 const Home = () => 
     {
         const [food, setfood] = useState([
@@ -11,6 +12,11 @@ const Home = () =>
         {id:1 ,name: 'ผัก',img:'https://www.kaiidea.com/wp-content/uploads/2023/07/%E0%B8%9C%E0%B8%B1%E0%B8%81%E0%B8%8A%E0%B8%B8%E0%B8%94-1024x1024.jpg' }
 
     ]);
+    const navigate = useNavigate();
+    const handleFoodClick =(id)=>{
+        navigate(``);
+    }
+
   return (
     <div>
       <div className='p-4 shadow-md flex justify-between items-center'>
@@ -21,7 +27,9 @@ const Home = () =>
       </div>
       <div className='my-8 flex flex-wrap justify-center items-center'>
             {food.map((food)=>(
-            <div className='mb-2 p-4 shadow-md w-5/6 rounded-md '>
+            <div key={food.id} 
+            onClick={()=> handleFoodClick(food.id)}
+            className='mb-2 p-4 shadow-md w-5/6 rounded-md '>
               <h1>{food.name}</h1>     
             </div> 
             ))}
