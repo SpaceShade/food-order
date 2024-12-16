@@ -29,7 +29,7 @@ const Detail = () => {
     }
 
     localStorage.setItem("foodItems", JSON.stringify(existingItems));
-    navigate("/summary");
+    navigate("/");
   };
 
   return (
@@ -55,7 +55,7 @@ const Detail = () => {
               onClick={handleConfirm}
               className="text-xl border-black border-2 px-2 m-2 rounded-md"
             >
-              Confirm
+              Add to cart
             </button>
           </div>
         </>
