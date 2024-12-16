@@ -5,7 +5,7 @@ import back from "../assets/back.png";
 
 const Navbar = () => {
   const location = useLocation();
-  const navigate = useNavigate();  // Add the useNavigate hook
+  const navigate = useNavigate(); 
 
   const getTitle = () => {
     switch (location.pathname) {
@@ -13,6 +13,8 @@ const Navbar = () => {
         return "Home";
       case "/detail":
         return "Detail";
+      case "/summary":
+        return "Summary";
       default:
         return "Page";
     }
@@ -23,6 +25,15 @@ const Navbar = () => {
       case "/":
         return null;
       case "/detail":
+        return (
+          <img
+            src={back}
+            alt="back"
+            className="w-3 h-3 cursor-pointer"
+            onClick={handleBackClick} 
+          />
+        );
+        case "/summary":
         return (
           <img
             src={back}
@@ -43,11 +54,16 @@ const Navbar = () => {
       case "/detail":
         navigate("/");  
         break;
+      case "/summary":
+        navigate("/");  
+        break;
       default:
         return null;
     }
   };
-
+  const handleCartClick =()=>{
+    navigate(`/summary`);
+}
   return (
     <div>
       <div className="p-4 shadow-md flex justify-between items-center">
@@ -55,7 +71,7 @@ const Navbar = () => {
           <div>{getBack()}</div>
           <h1 className="text-3xl ml-4">{getTitle()}</h1>
         </div>
-        <img src={cart} alt="cart" className="h-10 w-10" />
+       <img src={cart} alt="cart" className="h-10 w-10" onClick={handleCartClick} />
       </div>
     </div>
   );
