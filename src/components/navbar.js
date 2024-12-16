@@ -13,6 +13,8 @@ const Navbar = () => {
         return "Home";
       case "/detail":
         return "Detail";
+      case "/summary":
+        return "Summary";
       default:
         return "Page";
     }
@@ -23,6 +25,15 @@ const Navbar = () => {
       case "/":
         return null;
       case "/detail":
+        return (
+          <img
+            src={back}
+            alt="back"
+            className="w-3 h-3 cursor-pointer"
+            onClick={handleBackClick} 
+          />
+        );
+        case "/summary":
         return (
           <img
             src={back}
@@ -43,12 +54,15 @@ const Navbar = () => {
       case "/detail":
         navigate("/");  
         break;
+      case "/summary":
+        navigate("/");  
+        break;
       default:
         return null;
     }
   };
   const handleCartClick =()=>{
-    navigate(`/`);
+    navigate(`/summary`);
 }
   return (
     <div>
