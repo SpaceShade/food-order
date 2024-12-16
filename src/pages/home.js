@@ -13,19 +13,19 @@ const Home = () =>
 
     ]);
     const navigate = useNavigate();
-    const handleFoodClick =(id)=>{
-        navigate(`/detail`);
+    const handleFoodClick =(foodItem)=>{
+        navigate(`/detail`,{ state: foodItem });
     }
 
   return (
     <div>
         <Navbar/>
       <div className='my-8 flex flex-wrap justify-center items-center'>
-            {food.map((food)=>(
-            <div key={food.id} 
-            onClick={()=> handleFoodClick(food.id)}
+            {food.map((foodItem)=>(
+            <div key={foodItem.id} 
+            onClick={()=> handleFoodClick(foodItem)}
             className='mb-2 p-4 shadow-md w-5/6 rounded-md '>
-              <h1>{food.name}</h1>     
+              <h1>{foodItem.name}</h1>     
             </div> 
             ))}
         
