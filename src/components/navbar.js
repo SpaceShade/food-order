@@ -5,7 +5,7 @@ import back from "../assets/back.png";
 
 const Navbar = () => {
   const location = useLocation();
-  const navigate = useNavigate();  // Add the useNavigate hook
+  const navigate = useNavigate(); 
 
   const getTitle = () => {
     switch (location.pathname) {
@@ -47,7 +47,9 @@ const Navbar = () => {
         return null;
     }
   };
-
+  const handleCartClick =()=>{
+    navigate(`/`);
+}
   return (
     <div>
       <div className="p-4 shadow-md flex justify-between items-center">
@@ -55,7 +57,7 @@ const Navbar = () => {
           <div>{getBack()}</div>
           <h1 className="text-3xl ml-4">{getTitle()}</h1>
         </div>
-        <img src={cart} alt="cart" className="h-10 w-10" />
+       <img src={cart} alt="cart" className="h-10 w-10" onClick={handleCartClick} />
       </div>
     </div>
   );
