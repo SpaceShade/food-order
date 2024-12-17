@@ -22,7 +22,7 @@ const Navbar = () => {
         return "Detail";
       case "/summary":
         return "Summary";
-        case "/้hisotry":
+        case "/history":
           return "History";
       default:
         return "Page";
@@ -96,10 +96,10 @@ const Navbar = () => {
           <h1 className="text-3xl ml-4">{getTitle()}</h1>
         </div>
         <div className="flex">
-          <img src={cart} alt="cart" className="h-10 w-10" onClick={handleCartClick} />
           <div className="items-center flex justify-center ml-2">
             <img src={history} alt="history" className="h-8 w-8" onClick={handleHistoryClick}/>
-          </div>          
+          </div>
+          <img src={cart} alt="cart" className="h-10 w-10" onClick={handleCartClick} />          
           {cartTotal > 0 &&(  <div className="absolute right-4 mt-6 rounded-full bg-red-600 text-white flex items-center justify-center  w-5 h-5 text-xs">
           {cartTotal}
         </div>
