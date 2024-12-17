@@ -18,7 +18,6 @@ const Detail = () => {
 
     const existingItems = JSON.parse(localStorage.getItem("foodItems")) || [];
 
-
     const existingItemIndex = existingItems.findIndex(
       (item) => item.name === foodItem.name
     );
@@ -28,8 +27,9 @@ const Detail = () => {
     } else {
       existingItems.push({ name: foodItem.name, amount: count, img: foodItem.img });
     }
+
     localStorage.setItem("foodItems", JSON.stringify(existingItems));
-    navigate("/summary");
+    navigate("/");
   };
 
   return (
@@ -41,21 +41,21 @@ const Detail = () => {
           <div className="flex items-center justify-between">
             <h1 className="text-xl m-2">{foodItem.name}</h1>
             <div className="flex">
-              <button onClick={handleIncrement} className="text-2xl mx-4">
-                +
-              </button>
-              <h1 className="text-2xl">{count}</h1>
               <button onClick={handleDecrement} className="text-2xl mx-4">
                 -
+              </button>
+              <h1 className="text-2xl">{count}</h1>
+              <button onClick={handleIncrement} className="text-2xl mx-4">
+                +
               </button>
             </div>
           </div>
           <div className="justify-center items-center flex mt-4">
             <button
               onClick={handleConfirm}
-              className="text-xl shadow-lg px-2 m-2 rounded-md"
+              className="text-xl border-black border-2 px-2 m-2 rounded-md"
             >
-              Confirm
+              Add to cart
             </button>
           </div>
         </>
