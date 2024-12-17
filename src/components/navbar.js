@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import cart from "../assets/shopping-cart.png";
 import { useNavigate, useLocation } from "react-router-dom";
 import back from "../assets/back.png";
-
+import history from "../assets/history.png"
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate(); 
@@ -22,6 +22,8 @@ const Navbar = () => {
         return "Detail";
       case "/summary":
         return "Summary";
+        case "/้hisotry":
+          return "History";
       default:
         return "Page";
     }
@@ -49,6 +51,15 @@ const Navbar = () => {
             onClick={handleBackClick} 
           />
         );
+        case "/history":
+          return (
+            <img
+              src={back}
+              alt="back"
+              className="w-3 h-3 cursor-pointer"
+              onClick={handleBackClick} 
+            />
+          );
       default:
         return "back-img";
     }
@@ -64,6 +75,9 @@ const Navbar = () => {
       case "/summary":
         navigate("/");  
         break;
+      case "/history":
+        navigate("/");  
+        break;
       default:
         return null;
     }
@@ -71,6 +85,9 @@ const Navbar = () => {
   const handleCartClick =()=>{
     navigate(`/summary`);
 }
+  const handleHistoryClick =()=>{
+    navigate('/history');
+  }
   return (
     <div>
       <div className="p-4 shadow-md flex justify-between items-center">
@@ -79,12 +96,13 @@ const Navbar = () => {
           <h1 className="text-3xl ml-4">{getTitle()}</h1>
         </div>
         <div className="flex">
-       <img src={cart} alt="cart" className="h-10 w-10" onClick={handleCartClick} />
-       {cartTotal > 0 &&(  <div className="absolute right-4 mt-6 rounded-full bg-red-600 text-white flex items-center justify-center  w-5 h-5 text-xs">
-       {cartTotal}
-       </div>
-     
-     
+          <img src={cart} alt="cart" className="h-10 w-10" onClick={handleCartClick} />
+          <div className="items-center flex justify-center ml-2">
+            <img src={history} alt="history" className="h-8 w-8" onClick={handleHistoryClick}/>
+          </div>          
+          {cartTotal > 0 &&(  <div className="absolute right-4 mt-6 rounded-full bg-red-600 text-white flex items-center justify-center  w-5 h-5 text-xs">
+          {cartTotal}
+        </div>
       )}
         </div>
       </div>
