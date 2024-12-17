@@ -34,13 +34,13 @@ const Summary = () => {
 
     const newOrder = {
       items: foodItems,
-      date: new Date().toLocaleString(), 
+      date: new Date().toLocaleString(),
     };
 
     orderHistory.push(newOrder);
 
     localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
-    localStorage.removeItem("foodItems"); 
+    localStorage.removeItem("foodItems");
     setFoodItems([]);
 
     navigate("/history");
@@ -52,36 +52,38 @@ const Summary = () => {
       <div className="p-4">
         {foodItems.length > 0 ? (
           foodItems.map((item, index) => (
-            <div key={index} className="mt-2 flex justify-between">
-              <p className="text-xl">{item.name}</p>
-              <div className="flex items-center">
+            <>
+              <div key={index} className="mt-2 flex justify-between">
+                <p className="text-xl">{item.name}</p>
+                <div className="flex items-center">
+                  <button
+                    onClick={() => handleDecrement(index)}
+                    className="text-2xl mx-4"
+                  >
+                    -
+                  </button>
+                  <p className="text-xl">{item.amount}</p>
+                  <button
+                    onClick={() => handleIncrement(index)}
+                    className="text-2xl mx-4"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div className="justify-center flex">
                 <button
-                  onClick={() => handleDecrement(index)}
-                  className="text-2xl mx-4"
+                  onClick={handleConfirm}
+                  className="absolute bottom-4 text-xl border-black border-2 px-2  rounded-md"
                 >
-                  -
-                </button>
-                <p className="text-xl">{item.amount}</p>
-                <button
-                  onClick={() => handleIncrement(index)}
-                  className="text-2xl mx-4"
-                >
-                  +
+                  Confirm
                 </button>
               </div>
-            </div>
+            </>
           ))
         ) : (
           <p className="text-red-500 mt-4">No order details available.</p>
         )}
-      </div>
-      <div className="justify-center flex">
-        <button
-          onClick={handleConfirm}
-          className="absolute bottom-4 text-xl border-black border-2 px-2 m-2 rounded-md"
-        >
-          Confirm
-        </button>
       </div>
     </div>
   );
