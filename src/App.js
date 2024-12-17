@@ -4,6 +4,7 @@ import Home from './pages/home';
 import './App.css';
 import Detail from './pages/detail';
 import Summary from './pages/summary';
+import History from './pages/history';
 function App() {
   return (
     <Router>
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/summary" element={<Summary />} />
+        <Route path="/history" element={<History />} />
       </Routes>
     </Router>
   );
